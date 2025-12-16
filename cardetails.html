@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HEXA XOTICS - Car Details</title>
+    <link rel="stylesheet" href="aboutus.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cardetails.css">
+</head>
+<body class="min-h-screen flex flex-col">
+
+   <header class="header">
+        <div class="container header-content">
+
+            <div class="logo">
+                <a href="home.html" class="logo">
+                    <img src="./assets/logo.png" alt="home.html" class="logo-image">
+                </a>
+                <div class="logo-text">HEXA XOTICS</div>
+            </div>
+
+            <div class="header-right-group">
+                <nav class="header-nav-new">
+                    <a href="home.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        Shop
+                    </a>
+                    <a href="payment.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1"></circle>
+                            <circle cx="20" cy="21" r="1"></circle>
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                        </svg>
+                        Buy
+                    </a>
+                    <a href="acountmangment.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                            <circle cx="12" cy="7" r="4"></circle>
+                        </svg>
+                        Account
+                    </a>
+                    <a href="aboutus.html" class="nav-item active">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="12" y1="16" x2="12" y2="12"></line>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                        </svg>
+                        About us
+                    </a>
+                </nav>
+
+                <a href="#" class="search-icon-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                </a>
+
+                <button class="mobile-menu-btn" id="mobile-menu-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="3" y1="12" x2="21" y2="12"></line>
+                        <line x1="3" y1="6" x2="21" y2="6"></line>
+                        <line x1="3" y1="18" x2="21" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu-container" id="mobile-menu">
+            <a href="home.html" class="mobile-nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+                Shop
+            </a>
+            <a href="payment.html" class="mobile-nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="9" cy="21" r="1"></circle>
+                    <circle cx="20" cy="21" r="1"></circle>
+                    <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
+                </svg>
+                Buy
+            </a>
+            <a href="acountmangment.html" class="mobile-nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                </svg>
+                Account
+            </a>
+            <a href="aboutus.html" class="mobile-nav-item">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <line x1="12" y1="16" x2="12" y2="12"></line>
+                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                </svg>
+                About us
+            </a>
+        </div>
+    </header>
+
+    <main class="container">
+        <section class="product-section" id="product-content">
+            <div class="product-layout">
+                
+                <div class="gallery-card">
+                    <div class="main-image-container">
+                        <img id="main-image" src="" alt="Car Image" class="main-image">
+                    </div>
+                    <div class="thumbnails" id="thumbnails-container"></div>
+                </div>
+
+                <div class="details-card">
+                    <h1 id="car-title" class="car-title">Loading...</h1>
+                    <div id="car-price" class="car-price"></div>
+
+                    <div class="specs-grid">
+                        <div class="spec-item"><span>📅</span> Year: <span id="spec-year" class="spec-value">-</span></div>
+                        <div class="spec-item"><span>🏎️</span> Make: <span id="spec-make" class="spec-value">-</span></div>
+                        <div class="spec-item"><span>🚗</span> Model: <span id="spec-model" class="spec-value">-</span></div>
+                        <div class="spec-item"><span>⚙️</span> Engine: <span id="spec-engine" class="spec-value">-</span></div>
+                        <div class="spec-item"><span>🐎</span> HP: <span id="spec-hp" class="spec-value">-</span></div>
+                        <div class="spec-item"><span>⏱️</span> 0-60: <span id="spec-060" class="spec-value">-</span></div>
+                        <div class="spec-item"><span>🏁</span> Top Speed: <span id="spec-top" class="spec-value">-</span></div>
+                        <div class="spec-item"><span>🕹️</span> Trans: <span id="spec-trans" class="spec-value">-</span></div>
+                        <div class="spec-item"><span>🛣️</span> Mileage: <span id="spec-mileage" class="spec-value">-</span></div>
+                        <div class="spec-item"><span>🎨</span> Ext. Color: <span id="spec-color-ext" class="spec-value">-</span></div>
+                        <div class="spec-item"><span>🛋️</span> Int. Color: <span id="spec-color-int" class="spec-value">-</span></div>
+                    </div>
+
+                    <a href="#" class="btn btn-test-drive" id="test-drive-btn">Request Test Drive</a>
+                    
+                    <a href="payment.html" id="buy-link"><button class="btn btn-buy">Buy Now</button></a>
+                    
+                    <button class="btn btn-wishlist" id="wishlist-btn">🖤 Add to Wishlist</button>
+
+                    <div class="seller-info">
+                        <div class="seller-title">Seller Information</div>
+                        <div class="seller-detail">HEXA XOTICS Dealership</div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 HEXA XOTICS. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const carId = urlParams.get('id');
+
+        const titleEl = document.getElementById('car-title');
+        const priceEl = document.getElementById('car-price');
+        const imgEl = document.getElementById('main-image');
+        const thumbsContainer = document.getElementById('thumbnails-container');
+        const buyLink = document.getElementById('buy-link');
+        const wishlistBtn = document.getElementById('wishlist-btn'); // زر الـ Wishlist
+
+        const specs = {
+            year: document.getElementById('spec-year'),
+            make: document.getElementById('spec-make'),
+            model: document.getElementById('spec-model'),
+            engine: document.getElementById('spec-engine'),
+            hp: document.getElementById('spec-hp'),
+            zero60: document.getElementById('spec-060'),
+            topSpeed: document.getElementById('spec-top'),
+            trans: document.getElementById('spec-trans'),
+            mileage: document.getElementById('spec-mileage'),
+            extColor: document.getElementById('spec-color-ext'),
+            intColor: document.getElementById('spec-color-int')
+        };
+
+        async function fetchCarData() {
+            if (!carId) {
+                titleEl.innerText = "No Car Selected";
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:3000/api/cars/${carId}`);
+                const json = await response.json();
+                
+                if (json.message === "success" && json.data) {
+                    const car = json.data;
+
+                    buyLink.href = `payment.html?id=${car.id}`;
+
+                    titleEl.innerText = `${car.make} ${car.model}`;
+                    priceEl.innerText = `$${car.price.toLocaleString()}`;
+
+                    specs.year.innerText = car.year;
+                    specs.make.innerText = car.make;
+                    specs.model.innerText = car.model;
+                    specs.engine.innerText = car.engine || 'N/A';
+                    specs.hp.innerText = car.horsepower || 'N/A';
+                    specs.zero60.innerText = car.zero_to_sixty || 'N/A';
+                    specs.topSpeed.innerText = car.top_speed || 'N/A';
+                    specs.trans.innerText = car.transmission || 'Automatic';
+                    specs.mileage.innerText = car.mileage || 'New';
+                    specs.extColor.innerText = car.exterior_color || 'Standard';
+                    specs.intColor.innerText = car.interior_color || 'Standard';
+
+                    let mainImgPath = formatPath(car.image_url);
+                    imgEl.src = mainImgPath;
+                    
+                    if (car.gallery) {
+                        try {
+                            const galleryImages = JSON.parse(car.gallery);
+                            thumbsContainer.innerHTML = "";
+                            createThumbnail(mainImgPath, true);
+                            galleryImages.forEach(img => {
+                                createThumbnail(formatPath(img), false);
+                            });
+                        } catch (e) { console.error(e); }
+                    }
+
+                } else {
+                    titleEl.innerText = "Car Not Found!";
+                }
+
+            } catch (error) {
+                console.error("Error:", error);
+                titleEl.innerText = "Connection Error";
+            }
+        }
+
+        // ✅ Wishlist Functionality
+        wishlistBtn.addEventListener('click', async () => {
+            const userId = localStorage.getItem('userId');
+            
+            if (!userId) {
+                alert("Please log in first to add items to your wishlist.");
+                window.location.href = "login.html"; // Redirect to login if needed
+                return;
+            }
+
+            if (!carId) return;
+
+            try {
+                const response = await fetch('http://localhost:3000/api/wishlist/add', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userId, carId })
+                });
+
+                const result = await response.json();
+                alert(result.message || "Updated Wishlist");
+                
+            } catch (error) {
+                console.error("Wishlist Error:", error);
+                alert("Failed to add to wishlist.");
+            }
+        });
+
+        function formatPath(path) {
+            if (!path) return './assets/hero2.jpg';
+            if (path.startsWith('http')) return path;
+            const cleanPath = path.replace(/^[\.\/]+/, ''); 
+            return `http://localhost:3000/${cleanPath}`;
+        }
+
+        function createThumbnail(src, isActive) {
+            const thumb = document.createElement('img');
+            thumb.src = src;
+            thumb.className = isActive ? 'thumb active' : 'thumb';
+            thumb.onclick = function() { changeImage(src, this); };
+            thumbsContainer.appendChild(thumb);
+        }
+
+        function changeImage(newSrc, clickedThumb) {
+            const allThumbs = document.querySelectorAll('.thumb');
+            allThumbs.forEach(t => t.classList.remove('active'));
+            clickedThumb.classList.add('active');
+            imgEl.classList.add('fade-out');
+            setTimeout(() => {
+                imgEl.src = newSrc;
+                imgEl.onload = () => { imgEl.classList.remove('fade-out'); };
+            }, 200);
+        }
+
+        fetchCarData();
+    </script>
+</body>
+</html>

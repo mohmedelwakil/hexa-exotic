@@ -1,0 +1,906 @@
+/* --- CSS Reset & Global Variables (LIGHT THEME) --- */
+:root {
+    --color-light-bg: #ffffff; /* Page background: White */
+    --color-card-bg: #f8f8f8; /* Card background: Off-white */
+    --color-border: #e0e0e0; /* Light border */
+    
+    /* UPDATED: New Accent Color */
+    --color-accent-base: #950045; /* New purple-red color */
+    --color-accent-hover: #7b003a; /* Darker version for hover states */
+    
+    --color-accent: var(--color-accent-base); /* Using new color for the main accent */
+    --color-text-dark: #1a1a1a; /* Main text color: Dark */
+    --color-text-gray: #555555; /* General text color */
+    --color-text-light-gray: #777777; /* For roles and light descriptions */
+    --max-width: 1280px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--color-light-bg);
+    color: var(--color-text-dark);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* --- Header & Navigation (TRANSPARENT GREY) --- */
+.header {
+    /* Transparent grey background with opacity */
+    background-color: rgba(220, 220, 220, 0.7); 
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #cccccc;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* New Logo Styling */
+.logo {
+    /* Container for the logo image */
+    height: 30px; /* Adjusted height to match common header size */
+    display: flex;
+    align-items: center;
+    
+}
+
+.logo-image {
+    height: 100%; /* Make image fill the logo container height */
+    width: auto;
+}
+
+/* Grouping Navigation and Search for layout */
+.header-right-group {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Space between navigation group and search icon */
+}
+
+/* New Compact Navigation Styling */
+.header-nav-new {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* space between links */
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.header-nav-new .nav-item {
+    color: var(--color-text-gray);
+    text-decoration: none;
+    transition: color 0.3s;
+    /* Style to make text look like small icons/buttons */
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0; /* Padding for hover effect */
+}
+
+.header-nav-new .nav-item:hover,
+.header-nav-new .nav-item.active {
+    color: var(--color-accent); /* ACCENT on hover/active */
+    background-color: transparent; /* Ensure no background glow */
+}
+
+/* Search Icon Styling */
+.search-icon-link {
+    color: var(--color-text-dark);
+    text-decoration: none;
+    padding: 0.25rem;
+    transition: color 0.3s;
+}
+
+.search-icon-link:hover {
+    color: var(--color-accent); /* ACCENT on hover */
+}
+
+
+/* --- Removed old .header-nav styles --- */
+.logo-red,
+.header-nav,
+.header-nav a,
+.header-nav a::after,
+.header-nav a:hover,
+.header-nav a.active { display: none; }
+
+
+/* --- Main Content Layout --- */
+.main-content {
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+}
+
+.section {
+    text-align: center;
+    margin-bottom: 6rem;
+}
+
+.section-title {
+    font-size: 1.875rem;
+    font-weight: 700;
+    margin-bottom: 3rem;
+}
+
+/* --- Story Section --- */
+.story-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.025em;
+    line-height: 1.1;
+    color: var(--color-text-dark);
+}
+
+.story-text {
+    max-width: 48rem;
+    margin: 0 auto;
+    color: var(--color-text-gray);
+    line-height: 1.6;
+    font-size: 1.125rem;
+}
+
+/* --- Values Section --- */
+.values-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+}
+
+.card {
+    background-color: var(--color-card-bg);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08); 
+}
+
+.value-icon {
+    color: var(--color-accent); /* ACCENT */
+    font-size: 1.875rem;
+    margin-bottom: 1rem;
+    display: inline-block;
+}
+
+.value-icon svg {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 auto;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.card-text {
+    color: var(--color-text-light-gray);
+    font-size: 0.875rem;
+}
+
+/* --- Team Section --- */
+.team-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: 1fr;
+}
+
+.member-card {
+    background-color: var(--color-card-bg);
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.member-card:hover {
+    transform: translateY(-5px);
+    scale: calc(1.02);
+    /* Updated GLOW EFFECT to use the new color */
+    box-shadow: 0 10px 20px rgba(126, 1, 59, 0.859); 
+}
+
+.member-details {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+.member-photo {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--color-text-light-gray);
+}
+
+.member-photo.border-red {
+    border-color: var(--color-accent); /* ACCENT */
+}
+
+.member-name {
+    font-size: 1.125rem;
+    font-weight: 700;
+}
+
+.member-role {
+    font-size: 0.875rem;
+    color: var(--color-text-light-gray);
+}
+
+.member-role.text-red {
+    color: var(--color-accent); /* ACCENT */
+}
+
+.member-description {
+    font-size: 0.75rem;
+    color: var(--color-text-gray);
+}
+
+
+/* --- Call to Action (CTA) --- */
+.cta-section {
+    padding: 4rem 1.5rem;
+    background-color: var(--color-card-bg);
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.cta-title {
+    margin-bottom: 1rem;
+}
+
+.cta-text {
+    color: var(--color-text-light-gray);
+    margin-bottom: 2rem;
+    max-width: 42rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-button {
+    display: inline-block;
+    background-color: var(--color-accent); /* ACCENT */
+    color: var(--color-text-light);
+    font-weight: 600;
+    padding: 0.75rem 2rem;
+    border-radius: 0.5rem;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+    /* Updated GLOW for CTA button */
+    box-shadow: 0 4px 10px rgba(149, 0, 69, 0.3); 
+}
+
+.cta-button:hover {
+    background-color: var(--color-accent-hover); /* Darker ACCENT */
+    transform: scale(1.05);
+}
+
+/* --- Footer --- */
+.footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    color: var(--color-text-light-gray);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.875rem;
+}
+
+/* --- Responsive Adjustments (Desktop/Tablet) --- */
+
+    .header-nav-new {
+        /* Ensure navigation is displayed */
+        display: flex;
+    }
+    
+    .story-title {
+        font-size: 3.75rem;
+    }
+
+    .values-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    
+    .team-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+ .logo-text {
+            /* Using a bold, capitalized font to mimic the image structure */
+            font-family: Arial, sans-serif; 
+            font-weight: 900;
+            font-size: 1.5rem;
+            color: #444; /* Base dark color */
+            text-transform: uppercase;
+            
+            /* Text Shadow to simulate 3D/Metallic Effect */
+            text-shadow: 
+                0 1px 0 #fff, 
+                0 2px 0 #bbb, 
+                0 3px 0 #aaa, 
+                0 4px 0 #999,
+                0 5px 10px rgba(0, 0, 0, 0.5);
+            letter-spacing: 0.1em;
+        }
+    .footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    color: var(--color-text-light-gray);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.875rem;
+}
+
+/* Container to make links horizontal and spaced */
+.footer-links {
+    display: flex;
+    justify-content: center; /* Center the links group */
+    gap: 1.5rem; /* Space between links, matching .header-nav-new */
+    margin-top: 0.5rem; /* Space below the copyright text */
+    font-size: 0.875rem; /* Keep font size consistent with nav */
+    font-weight: 500; /* Keep font weight consistent with nav */
+}
+
+/* Style for the actual link <a> tag */
+.footer-links a {
+    /* ADOPTING STYLES FROM .header-nav-new .nav-item */
+    color: var(--color-text-gray); /* Default text color */
+    text-decoration: none;
+    transition: color 0.3s;
+    /* Optional: Added padding for a larger click area */
+    padding: 0.25rem 0; 
+}
+
+.footer-links a:hover,
+.footer-links a.active {
+    /* ADOPTING STYLES FROM .header-nav-new .nav-item:hover */
+    color: var(--color-accent); /* ACCENT on hover/active */
+    background-color: transparent;
+}
+  .chat-icon-container {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .chat-icon {
+            color: var(--color-accent);
+            width: 70px;
+            height: 70px;
+        }
+
+        /* Custom focus and accent styles for the form */
+        .input-style:focus {
+            border-color: var(--color-accent) !important;
+            box-shadow: 0 0 0 1px var(--color-accent) !important;
+        }
+
+        .accent-color {
+            color: var(--color-accent);
+        }
+        
+        .accent-bg {
+            background-color: var(--color-accent);
+        }
+        .accent-bg:hover {
+            background-color: var(--color-accent-hover, #7b003a);
+        }
+
+
+
+
+       .checkout-container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .main-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+        }
+
+        .checkout-grid {
+            display: flex;
+            gap: 30px;
+        }
+
+        /* CARD STYLES */
+        .card {
+            background-color: var(--card-bg);
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        .summary-card { flex: 1; }
+        .payment-card { flex: 1.2; }
+
+        .section-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        .text-magenta { color: #a01b58; }
+
+        .sub-text {
+            font-size: 0.9rem;
+            color: var(--text-gray);
+            margin-bottom: 20px;
+        }
+
+        /* IMAGE */
+        .product-image-container {
+            width: 100%;
+            height: 180px;
+            background: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .product-img {
+            max-width: 100%;
+            height: auto;
+            object-fit: cover;
+        }
+
+        /* MANUAL PRICE INPUT STYLE */
+        .manual-price-group {
+            margin-bottom: 20px;
+        }
+        
+        .manual-price-label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 5px;
+        }
+
+        .price-input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .currency-symbol {
+            position: absolute;
+            left: 10px;
+            font-size: 1.1rem;
+            color: #333;
+        }
+
+        #manual-base-price {
+            width: 100%;
+            padding: 10px 10px 10px 25px; /* Space for $ sign */
+            font-size: 1.1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .divider {
+            border: 0;
+            border-top: 1px solid #ddd;
+            margin: 15px 0;
+        }
+
+        /* SUMMARY ROWS */
+        .price-breakdown {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.9rem;
+        }
+
+        .total-row {
+            font-weight: 800;
+            font-size: 1.4rem;
+            margin-top: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .disclaimer {
+            font-size: 0.75rem;
+            color: #999;
+            margin-top: 20px;
+        }
+
+        /* PAYMENT FORM STYLES */
+        .payment-options-box {
+            border: 1px solid #777;
+            border-radius: 4px;
+            padding: 20px;
+            background: #fff;
+            margin-bottom: 15px;
+        }
+
+        .paypal-box {
+            border: 1px solid #777;
+            border-radius: 4px;
+            padding: 15px 20px;
+            background: #fff;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        /* Header inside the credit card box */
+        .radio-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        .radio-left {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .mc-logo {
+            height: 24px; 
+            vertical-align: middle;
+        }
+
+        .card-reader-img {
+            height: 60px;
+            border-radius: 4px;
+        }
+
+        /* Form Inputs */
+        .cc-form label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .cc-form input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #777;
+            border-radius: 4px;
+            box-sizing: border-box;
+            background: #fdfdfd;
+        }
+        
+        .row-inputs {
+            display: flex;
+            gap: 15px;
+        }
+
+        /* Checkboxes */
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            margin-top: 5px;
+            color: #1a1a1a;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            width: 16px;
+            height: 16px;
+            accent-color: #333;
+        }
+
+        /* Terms Checkbox specific */
+        .terms-check {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .action-area {
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .btn-checkout {
+            background-color: var(--accent-color);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #ffffff;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 60%;
+            transition: background 0.3s;
+                background-color: #a85d7b;
+        }
+
+        .btn-checkout:hover {
+            background-color: #7b003a;
+        }
+
+        @media (max-width: 768px) {
+            .checkout-grid { flex-direction: column; }
+            .btn-checkout { width: 100%; }
+        }
+            .mobile-menu-btn {
+            display: none; 
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--color-text-dark);
+            padding: 0.25rem;
+        }
+
+        .mobile-menu-container {
+            display: none; 
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: rgba(245, 245, 245, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #ccc;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu-container.open {
+            display: block;
+        }
+
+    
+        .mobile-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1.5rem;
+            color: var(--color-text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+        }
+
+        .mobile-nav-item:hover {
+            background-color: rgba(0,0,0,0.05);
+            color: var(--color-accent);
+            border-left-color: var(--color-accent);
+        }
+
+    
+        @media (max-width: 768px) {
+            .header-nav-new {
+                display: none; 
+            }
+            .mobile-menu-btn {
+                display: block; 
+            }
+            .header-right-group {
+                gap: 1rem;
+            }
+        }
+
+        /* Mobile Menu Button (Hamburger) */
+.mobile-menu-btn {
+    display: none; /* Hidden by default on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-dark);
+    padding: 0.25rem;
+}
+
+/* Mobile Menu Container (The Dropdown) */
+.mobile-menu-container {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(245, 245, 245, 0.98);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #ccc;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* This class is added by JavaScript to show the menu */
+.mobile-menu-container.open {
+    display: block;
+}
+
+/* Mobile Nav Links Styling */
+.mobile-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    color: var(--color-text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+}
+
+.mobile-nav-item:hover {
+    background-color: rgba(0,0,0,0.05);
+    color: var(--color-accent);
+    border-left-color: var(--color-accent);
+}
+
+/* --- RESPONSIVE MEDIA QUERY --- */
+/* This is crucial: It switches from Desktop to Mobile view */
+@media (max-width: 768px) {
+    .header-nav-new {
+        display: none; /* Hide Desktop Menu */
+    }
+    .mobile-menu-btn {
+        display: block; /* Show Hamburger Button */
+    }
+    .header-right-group {
+        gap: 1rem;
+    }
+}
+/* --- POPUP MODAL STYLES --- */
+/* --- POPUP MODAL OVERLAY --- */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Dark background to focus attention on the receipt */
+    background-color: rgba(0, 0, 0, 0.65); 
+    backdrop-filter: blur(4px); /* Blurs the background page */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999; /* Sits on top of everything */
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* --- RECEIPT CARD DESIGN (Mirrors Order Summary) --- */
+.modal-content.receipt-card {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 480px; /* Width similar to the summary card */
+    box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+    transform: translateY(30px);
+    transition: transform 0.4s cubic-bezier(0.19, 1, 0.22, 1);
+    border: 1px solid #e0e0e0; 
+    position: relative;
+}
+
+.modal-overlay.open .modal-content {
+    transform: translateY(0);
+}
+
+/* --- RECEIPT INTERNALS --- */
+/* Image container specific to popup */
+.small-img-container {
+    height: 150px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    margin-bottom: 15px;
+    border-radius: 6px;
+    border: 1px solid #eee;
+    overflow: hidden;
+}
+
+.small-img-container img {
+    max-height: 100%;
+    width: auto;
+}
+
+/* Text Styles */
+.text-magenta {
+    color: #a01b58; 
+    font-weight: 700;
+}
+
+.receipt-card .section-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.receipt-card .sub-text {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 1.5rem;
+}
+
+.receipt-card .product-name {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Price Rows inside Modal */
+.receipt-card .price-breakdown {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.receipt-card .price-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.receipt-card .divider {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 15px 0;
+}
+
+.receipt-card .total-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #000;
+    margin-bottom: 25px;
+}
+
+/* Button inside Modal */
+.receipt-card .action-area {
+    margin-top: 0;
+}
+
+.receipt-card .btn-checkout {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border-radius: 4px;
+}

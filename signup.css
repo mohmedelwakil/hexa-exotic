@@ -1,0 +1,594 @@
+.footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    color: var(--color-text-light-gray);
+    border-top: 1px solid var(--color-border);
+    font-size: 0.875rem;
+}
+
+/* Container to make links horizontal and spaced */
+.footer-links {
+    display: flex;
+    justify-content: center; /* Center the links group */
+    gap: 1.5rem; /* Space between links, matching .header-nav-new */
+    margin-top: 0.5rem; /* Space below the copyright text */
+    font-size: 0.875rem; /* Keep font size consistent with nav */
+    font-weight: 500; /* Keep font weight consistent with nav */
+}
+
+/* Style for the actual link <a> tag */
+.footer-links a {
+    /* ADOPTING STYLES FROM .header-nav-new .nav-item */
+    color: var(--color-text-gray); /* Default text color */
+    text-decoration: none;
+    transition: color 0.3s;
+    /* Optional: Added padding for a larger click area */
+    padding: 0.25rem 0; 
+}
+
+.footer-links a:hover,
+.footer-links a.active {
+    /* ADOPTING STYLES FROM .header-nav-new .nav-item:hover */
+    color: var(--color-accent); /* ACCENT on hover/active */
+    background-color: transparent;
+}
+
+
+
+
+/* --- CSS Reset & Global Variables (LIGHT THEME) --- */
+:root {
+    --color-light-bg: #ffffff;
+    --color-card-bg: #f8f8f8;
+    --color-border: #e0e0e0;
+    
+    /* UPDATED: New Accent Color */
+    --color-accent-base: #950045; /* New purple-red color */
+    --color-accent-hover: #7b003a; /* Darker version for hover states */
+    
+    --color-accent: var(--color-accent-base); /* Using new color for the main accent */
+    --color-text-dark: #1a1a1a; /* Main text color: Dark */
+    --color-text-gray: #555555; /* General text color */
+    --color-text-light-gray: #777777;
+    --max-width: 1280px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    /* Only keeping colors that reference variables defined above */
+    background-color: var(--color-light-bg);
+    color: var(--color-text-dark);
+    line-height: 1.5;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+/* --- Header & Navigation (TRANSPARENT GREY) --- */
+.header {
+    /* Transparent grey background with opacity */
+    background-color: rgba(220, 220, 220, 0.7); 
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #cccccc;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: blur(5px);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* New Logo Styling */
+.logo {
+    /* Container for the logo image */
+    height: 30px; /* Adjusted height to match common header size */
+    display: flex;
+    align-items: center;
+}
+
+.logo-image {
+    height: 100%; /* Make image fill the logo container height */
+    width: auto;
+}
+
+/* Special Text Logo Styling */
+.logo-text {
+    /* Using a bold, capitalized font to mimic the image structure */
+    font-family: Arial, sans-serif; 
+    font-weight: 900;
+    font-size: 1.5rem;
+    color: #444; /* Base dark color */
+    text-transform: uppercase;
+    
+    /* Text Shadow to simulate 3D/Metallic Effect */
+    text-shadow: 
+        0 1px 0 #fff, 
+        0 2px 0 #bbb, 
+        0 3px 0 #aaa, 
+        0 4px 0 #999,
+        0 5px 10px rgba(0, 0, 0, 0.5);
+    letter-spacing: 0.1em;
+}
+
+/* Grouping Navigation and Search for layout */
+.header-right-group {
+    display: flex;
+    align-items: center;
+    gap: 2rem; /* Space between navigation group and search icon */
+}
+
+/* New Compact Navigation Styling */
+.header-nav-new {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem; /* space between links */
+    font-size: 0.875rem;
+    font-weight: 500;
+}
+
+.header-nav-new .nav-item {
+    color: var(--color-text-gray);
+    text-decoration: none;
+    transition: color 0.3s;
+    /* Style to make text look like small icons/buttons */
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.25rem 0; /* Padding for hover effect */
+}
+
+.header-nav-new .nav-item:hover,
+.header-nav-new .nav-item.active {
+    color: var(--color-accent); /* ACCENT on hover/active */
+    background-color: transparent; /* Ensure no background glow */
+}
+
+/* Search Icon Styling */
+.search-icon-link {
+    color: var(--color-text-dark);
+    text-decoration: none;
+    padding: 0.25rem;
+    transition: color 0.3s;
+}
+
+.search-icon-link:hover {
+    color: var(--color-accent); /* ACCENT on hover */
+}
+
+/* --- Removed old .header-nav styles --- */
+.logo-red,
+.header-nav,
+.header-nav a,
+.header-nav a::after,
+.header-nav a:hover,
+.header-nav a.active { display: none; }
+
+
+/* --- Responsive Adjustments (Desktop/Tablet) --- */
+/* The block below was not inside a media query but is critical for desktop display */
+.header-nav-new {
+    /* Ensure navigation is displayed */
+    display: flex;
+}
+
+
+/* General Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+:root {
+    --primary-color: #900048; /* The Maroon/Pink color from the image */
+    --text-color: #333;
+    --input-bg: #f4f6f8;
+    --dark-btn: #2b2b2b;
+}
+
+/* Wrapper to center the form on the page */
+.signup-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f9f9f9; /* Light grey background */
+    padding: 40px 20px;
+}
+
+.signup-container {
+    width: 100%;
+    max-width: 450px; /* Limits width like the image */
+    background: transparent; /* Or white if you want a card look */
+}
+
+/* Logo Styling */
+.form-logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-logo img {
+    max-width: 200px; /* Adjust based on your actual logo size */
+    height: auto;
+}
+
+/* Title Styling */
+.form-title {
+    text-align: center;
+    color: var(--primary-color);
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+/* Input Fields Styling */
+.input-group {
+    margin-bottom: 15px;
+}
+
+.input-group label {
+    display: block;
+    font-size: 14px;
+    color: var(--text-color);
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px 15px;
+    background-color: var(--input-bg);
+    border: 1px solid transparent;
+    border-radius: 6px;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #ddd;
+    background-color: #fff;
+}
+
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+/* Primary Button */
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.3s;
+}
+
+.btn-primary:hover {
+    opacity: 0.9;
+}
+
+/* Divider (OR) */
+.divider {
+    text-align: center;
+    margin: 25px 0;
+    position: relative;
+}
+
+.divider span {
+    font-size: 14px;
+    color: #666;
+    border-bottom: 1px solid #999;
+    padding-bottom: 2px;
+}
+
+/* Social Buttons */
+.social-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 12px;
+    background-color: var(--dark-btn);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.btn-social i {
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+.btn-social:hover {
+    opacity: 0.9;
+}
+
+/* Sign In Link */
+.signin-link {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+.signin-link a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.signin-link a:hover {
+    text-decoration: underline;
+}
+
+
+
+/* Update this existing class */
+.form-logo {
+    display: flex;              /* Check this: Align items side-by-side */
+    align-items: center;        /* Vertically center the text with the logo */
+    justify-content: center;    /* Center the whole group in the container */
+    gap: 15px;                  /* Space between the logo image and the text */
+    margin-bottom: 30px;
+}
+
+/* Make sure the logo isn't too big */
+.form-logo img {
+    max-width: 60px;            /* Adjust this width to match your specific logo file */
+    height: auto;
+    
+}
+
+.brand-text {
+    /* 1. Use the same font as the header */
+    font-family: 'Inter', sans-serif;
+    
+    /* 2. Style adjustments to match the logo look */
+    font-size: 24px;
+    font-weight: 700; /* Bold */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    
+    /* Optional: Keep the silver/metallic look from the image */
+    color: #b0b0b0;             
+    background: linear-gradient(to bottom, #888, #ccc, #888);
+
+    -webkit-text-fill-color: transparent;
+}
+
+body {
+    background: #f4f4f4;
+    font-family: Arial, sans-serif;
+}
+
+.containerr {
+    width: 380px;
+    margin: 60px auto;
+    background: white;
+    padding: 40px 35px;
+    border-radius: 15px;
+    box-shadow: 0 0 20px #ddd;
+    text-align: center;
+}
+
+.logoo {
+    width: 180px;
+    margin-bottom: 15px;
+}
+
+h2 {
+    margin-bottom: 25px;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+label {
+    text-align: left;
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 20px;
+    font-size: 14px;
+}
+
+.forgot {
+    color: #b3004b;
+}
+
+.btn {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 8px 0;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.primary {
+    background: #b3004b;
+    color: white;
+}
+
+.google, .apple {
+    background: #111;
+    color: white;
+}
+
+.divider {
+    margin: 15px 0;
+    font-weight: bold;
+    color: #777;
+}
+
+.signup {
+    margin-top: 15px;
+}
+
+.signup a {
+    color: #b3004b;
+    font-weight: bold;
+}
+
+
+    .mobile-menu-btn {
+            display: none; 
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--color-text-dark);
+            padding: 0.25rem;
+        }
+
+ 
+        .mobile-menu-container {
+            display: none; 
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: rgba(245, 245, 245, 0.98);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #ccc;
+            padding: 1rem 0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .mobile-menu-container.open {
+            display: block;
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.75rem 1.5rem;
+            color: var(--color-text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            border-left: 3px solid transparent;
+        }
+
+        .mobile-nav-item:hover {
+            background-color: rgba(0,0,0,0.05);
+            color: var(--color-accent);
+            border-left-color: var(--color-accent);
+        }
+
+      
+        @media (max-width: 768px) {
+            .header-nav-new {
+                display: none; 
+            }
+            .mobile-menu-btn {
+                display: block; 
+            }
+            .header-right-group {
+                gap: 1rem;
+            }
+        }
+        /* Mobile Menu Button (Hamburger) */
+.mobile-menu-btn {
+    display: none; /* Hidden by default on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-dark);
+    padding: 0.25rem;
+}
+
+/* Mobile Menu Container (The Dropdown) */
+.mobile-menu-container {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: rgba(245, 245, 245, 0.98);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #ccc;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* This class is added by JavaScript to show the menu */
+.mobile-menu-container.open {
+    display: block;
+}
+
+/* Mobile Nav Links Styling */
+.mobile-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    color: var(--color-text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    border-left: 3px solid transparent;
+}
+
+.mobile-nav-item:hover {
+    background-color: rgba(0,0,0,0.05);
+    color: var(--color-accent);
+    border-left-color: var(--color-accent);
+}
+
+/* --- RESPONSIVE MEDIA QUERY --- */
+/* This is crucial: It switches from Desktop to Mobile view */
+@media (max-width: 768px) {
+    .header-nav-new {
+        display: none; /* Hide Desktop Menu */
+    }
+    .mobile-menu-btn {
+        display: block; /* Show Hamburger Button */
+    }
+    .header-right-group {
+        gap: 1rem;
+    }
+}

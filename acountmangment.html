@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Account Management</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="acountmangment.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="home.html" class="logo">
+                    <img src="./assets/logo.png" alt="home.html" class="logo-image">
+                </a>
+                <div class="logo-text">HEXA XOTICS</div>
+            </div>
+
+            <div class="header-right-group">
+                <nav class="header-nav-new">
+                    <a href="home.html" class="nav-item">Shop</a>
+                    <a href="payment.html" class="nav-item">Buy</a>
+                    <a href="acountmangment.html" class="nav-item">Account</a>
+                    <a href="aboutus.html" class="nav-item active">About us</a>
+                </nav>
+                <button class="mobile-menu-btn" id="mobile-menu-toggle">Menu</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="page-layout">
+        <div class="sidebar">
+            <div class="profile-tab">
+                <img style="width: 18px; height: 18px; margin-left: 10px; margin-top: 5px; margin-right: 10px;" 
+                src="./assets/profile-icon.png" alt=""> Profile
+            </div>
+
+            <div class="actions-box" style="margin-bottom: 20px;">
+                <h3>My Shopping</h3>
+                <div class="account-details">
+                    <p>Access your saved luxury items.</p>
+                    
+                    <button class="action-btn" onclick="window.location.href='wishlist.html'">
+                        My Wishlist
+                    </button>
+                </div>
+            </div>
+
+            <div class="actions-box drawer-box">
+                <div class="drawer-header" onclick="toggleDrawer()">
+                    <h3>Account Actions</h3>
+                    <span class="drawer-arrow" id="drawer-icon">▼</span>
+                </div>
+
+                <div class="drawer-content" id="actions-content">
+                    <div class="account-details" style="padding-top: 15px;">
+                        <p>Manage critical actions (Logout, Delete).</p>
+
+                        <div class="action-block">
+                            <div class="action-head">
+                               <img src="./assets/alert_sign1.png" alt="">
+                               <p style="margin-top: 5px; margin-bottom: 5px;">Log out</p>
+                            </div>
+                            <p style="color: #9095a0; margin-bottom: 5px; font-size: 13px;">You will need to log back in.</p>
+                        </div>
+                        <button class="action-btn" onclick="handleLogout()">Log out</button>
+
+                        <div class="action-block">
+                            <div class="action-head">
+                               <img src="./assets/alert_sign1.png" alt="">
+                               <p style="margin-top: 5px; margin-bottom: 5px;">Delete Account</p>
+                            </div>
+                            <p style="color: #9095a0; margin-bottom: 5px; font-size: 13px;">Permanently delete your account.</p>
+                        </div>
+                        <button class="action-btn delete-btn" onclick="handleDeleteAccount()">Delete Account</button>
+                    </div>
+                </div>
+            </div>        
+        </div>
+    
+        <div class="main">
+            <h1 style="padding-bottom: 20px; padding-left: 100px; color: #171a1f;">Account Management</h1>
+
+            <div class="card">
+                <h2 style="color: #171a1f;">Profile Information</h2>
+                <p style="margin-bottom: 20px;">Update your personal details and communication preferences.</p>
+
+                <div class="avatar-box">
+                    <img src="assets/profile-photo.jpg" alt="avatar" id="current-avatar">
+                    <input type="file" id="file-upload" accept="image/*" style="display: none;">
+                    <button class="change-avatar-btn" onclick="document.getElementById('file-upload').click()">Change Avatar</button>
+                </div>  
+
+                <label>Name</label>
+                <input type="text" id="profile-name" placeholder="Loading..." />
+
+                <label>Email</label>
+                <input type="email" id="profile-email" placeholder="Loading..." readonly />
+
+                <label>Phone Number</label>
+                <input type="text" id="profile-phone" placeholder="Add Phone Number" />
+
+                <label>Preferred Communication</label>
+                <select>
+                    <option value="email">Email</option>
+                    <option value="phone">Phone Calls</option>
+                    <option value="whatsapp">WhatsApp</option>
+                </select>
+
+                <div class="btns">
+                    <button class="cancel-btn">Cancel</button>
+                    <button class="save-btn" onclick="handleSaveChanges()">Save Changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2025 HEXA XOTICS. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="privacyandpolicy.html">Privacy Policy</a>
+            <a href="Terms.html">Terms of Service</a>
+            <a href="contactUS.html">Contact Us</a>
+        </div>
+    </footer>
+
+    <script>
+    const API_URL = "http://localhost:3000/api";
+    const userId = localStorage.getItem('userId');
+
+    // --- DRAWER TOGGLE FUNCTION ---
+    function toggleDrawer() {
+        const content = document.getElementById('actions-content');
+        const icon = document.getElementById('drawer-icon');
+        
+        if (content.style.maxHeight) {
+            content.style.maxHeight = null; // Close
+            icon.style.transform = "rotate(0deg)";
+        } else {
+            content.style.maxHeight = content.scrollHeight + "px"; // Open
+            icon.style.transform = "rotate(180deg)";
+        }
+    }
+
+    // 1. Mobile Menu
+    document.getElementById('mobile-menu-toggle').addEventListener('click', () => {
+        const menu = document.querySelector('.header-right-group nav');
+        if(menu) menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // 2. Load User Data
+    window.onload = async function() {
+        if (!userId) { window.location.href = 'signin.html'; return; }
+        try {
+            const response = await fetch(`${API_URL}/user/${userId}`);
+            const user = await response.json();
+            if(user.error) {
+                handleLogout();
+            } else {
+                document.getElementById('profile-name').value = user.username;
+                document.getElementById('profile-email').value = user.email;
+                document.getElementById('profile-phone').value = user.phone || "";
+                if(user.profile_image) {
+                    document.getElementById('current-avatar').src = `http://localhost:3000${user.profile_image}`;
+                }
+            }
+        } catch (error) { console.error("Error connecting to server:", error); }
+    };
+
+    // 3. Handle File Upload
+    const fileInput = document.getElementById('file-upload');
+    fileInput.addEventListener('change', async (event) => {
+        const file = event.target.files[0];
+        if (!file) return;
+        const formData = new FormData();
+        formData.append('avatar', file);
+        try {
+            const response = await fetch(`${API_URL}/upload-avatar/${userId}`, { method: 'POST', body: formData });
+            const data = await response.json();
+            if (data.imageUrl) {
+                document.getElementById('current-avatar').src = `http://localhost:3000${data.imageUrl}`;
+                alert("Profile picture updated!");
+            } else { alert("Upload failed."); }
+        } catch (err) { console.error(err); alert("Error uploading image."); }
+    });
+
+    // 4. Save Changes
+    async function handleSaveChanges() {
+        const username = document.getElementById('profile-name').value;
+        const phone = document.getElementById('profile-phone').value;
+        try {
+            const response = await fetch(`${API_URL}/update-user/${userId}`, {
+                method: 'PUT',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ username, phone })
+            });
+            if (response.ok) alert("Changes saved successfully!"); else alert("Failed to save changes.");
+        } catch (error) { console.error(error); alert("Server error."); }
+    }
+
+    function handleLogout() {
+        localStorage.removeItem('userId'); 
+        window.location.href = 'signin.html';
+    }
+
+    async function handleDeleteAccount() {
+        if(confirm("Are you sure? This action cannot be undone!")) {
+            try {
+                const response = await fetch(`${API_URL}/delete-account/${userId}`, { method: 'DELETE' });
+                if (response.ok) {
+                    localStorage.removeItem('userId');
+                    alert("Account has been deleted.");
+                    window.location.href = 'signup.html';
+                } else { alert("Failed to delete account."); }
+            } catch (error) { alert("Server error."); }
+        }
+    }
+    </script>
+</body>
+</html>

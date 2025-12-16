@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dream Garage | Hexa Xotics</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="wishlist.css">
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-content">
+            
+            <div class="logo">
+                <img src="./assets/logo.png" alt="HEXA XOTICS Logo" class="logo-image">
+                    <div class="logo-text">HEXA XOTICS</div>
+            </div>
+            
+            <div class="header-right-group">
+                <nav class="header-nav-new">
+                    <a href="home.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        Shop
+                    </a>
+                    <a href="payment.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        Buy
+                    </a>
+                    <a href="acountmangment.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        Account
+                    </a>
+                    <a href="aboutus.html" class="nav-item active">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        About us
+                    </a>
+                </nav>
+                
+                <a href="#" class="search-icon-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </a>
+            </div>
+
+        </div>
+    </header>
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Your Dream Garage Awaits</h1>
+            <p>Manage your curated selection of the world's most exclusive luxury automobiles. From hypercars to grand tourers, your wishlist reflects your ultimate automotive aspirations.</p>
+        </div>
+        <div class="hero-icon">
+            <i class="fas fa-hand-holding-heart"></i>
+        </div>
+    </section>
+
+    <main class="container main-garage-area">
+        
+        <div class="controls-bar">
+            <label class="select-all">
+                <input type="checkbox" id="select-all-checkbox"> Select All
+            </label>
+            <button class="btn-remove" id="btn-remove-selected">Remove Selected</button>
+        </div>
+
+        <div class="garage-grid" id="wishlist-container">
+            <p style="text-align:center; width:100%; color: #888;">Loading your wishlist...</p>
+        </div>
+
+        <div class="footer-action">
+            <a href="home.html"><button class="btn-continue">Continue Browsing Exotics</button></a>
+        </div>
+
+    </main>
+
+
+    <footer class="footer">
+        <p>&copy; 2025 HEXA XOTICS. All rights reserved.</p>
+    
+        <div class="footer-links">
+            <a href="privacyandPolicy.html">Privacy Policy</a>
+            <a href="Terms.html">Terms of Service</a>
+            <a href="contactUS.html">Contact Us</a>
+        </div>
+    </footer>
+
+    <script>
+        const userId = localStorage.getItem('userId');
+        const wishlistContainer = document.getElementById('wishlist-container');
+        const selectAllCheckbox = document.getElementById('select-all-checkbox');
+        const removeSelectedBtn = document.getElementById('btn-remove-selected');
+
+        // Helper to format Image URL
+        function formatPath(path) {
+            if (!path) return './assets/hero2.jpg';
+            if (path.startsWith('http')) return path;
+            const cleanPath = path.replace(/^[\.\/]+/, ''); 
+            return `http://localhost:3000/${cleanPath}`;
+        }
+
+        async function fetchWishlist() {
+            // Reset select all checkbox
+            if (selectAllCheckbox) selectAllCheckbox.checked = false;
+
+            if (!userId) {
+                wishlistContainer.innerHTML = `
+                    <div style="text-align: center; width: 100%; padding: 40px;">
+                        <h2>Please Log In</h2>
+                        <p>You need to be logged in to view your wishlist.</p>
+                        <a href="login.html" class="btn-details" style="display:inline-block; margin-top:10px;">Go to Login</a>
+                    </div>
+                `;
+                return;
+            }
+
+            try {
+                const response = await fetch(`http://localhost:3000/api/wishlist/${userId}`);
+                const json = await response.json();
+
+                if (json.message === "success") {
+                    renderWishlist(json.data);
+                } else {
+                    wishlistContainer.innerHTML = "<p>Failed to load wishlist.</p>";
+                }
+            } catch (error) {
+                console.error("Error fetching wishlist:", error);
+                wishlistContainer.innerHTML = "<p>Error connecting to server.</p>";
+            }
+        }
+
+        function renderWishlist(cars) {
+            wishlistContainer.innerHTML = "";
+
+            if (cars.length === 0) {
+                wishlistContainer.innerHTML = `
+                    <div style="grid-column: 1/-1; text-align: center; padding: 50px;">
+                        <h3>Your wishlist is empty 🖤</h3>
+                        <p>Go to the shop to add some dream cars.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            cars.forEach(car => {
+                const card = document.createElement('div');
+                card.className = 'car-card';
+                
+                // ✅ Added data-id to the checkbox to identify car later
+                card.innerHTML = `
+                    <div class="card-image">
+                        <input type="checkbox" class="card-check" data-id="${car.id}">
+                        <img src="${formatPath(car.image_url)}" alt="${car.make} ${car.model}">
+                    </div>
+                    <div class="card-details">
+                        <h3>${car.make} ${car.model}</h3>
+                        <ul class="specs">
+                            <li>• ${car.horsepower}</li>
+                            <li>• ${car.zero_to_sixty}</li>
+                            <li>• ${car.engine}</li>
+                        </ul>
+                        <div class="price">$${car.price.toLocaleString()}</div>
+                        <div class="card-actions">
+                            <a href="cardetails.html?id=${car.id}"><button class="btn-details">View Details</button></a>
+                            <button class="btn-delete" onclick="removeFromWishlist(${car.id})"><i class="fas fa-trash"></i></button>
+                        </div>
+                    </div>
+                `;
+                wishlistContainer.appendChild(card);
+            });
+        }
+
+        // ✅ Function for Single Delete Button
+        async function removeFromWishlist(carId) {
+            if(!confirm("Are you sure you want to remove this car?")) return;
+            await deleteCarFromApi(carId);
+            fetchWishlist();
+        }
+
+        // ✅ Function to Call API
+        async function deleteCarFromApi(carId) {
+            try {
+                await fetch('http://localhost:3000/api/wishlist/remove', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ userId, carId })
+                });
+            } catch (error) {
+                console.error("Error removing item:", error);
+            }
+        }
+
+        // ✅ "Select All" Logic
+        selectAllCheckbox.addEventListener('change', function() {
+            const allCheckboxes = document.querySelectorAll('.card-check');
+            allCheckboxes.forEach(cb => cb.checked = this.checked);
+        });
+
+        // ✅ "Remove Selected" Logic
+        removeSelectedBtn.addEventListener('click', async function() {
+            const selectedCheckboxes = document.querySelectorAll('.card-check:checked');
+            
+            if (selectedCheckboxes.length === 0) {
+                alert("Please select items to remove first.");
+                return;
+            }
+
+            if (!confirm(`Are you sure you want to remove ${selectedCheckboxes.length} item(s)?`)) {
+                return;
+            }
+
+            // Loop through all selected and delete
+            const deletePromises = Array.from(selectedCheckboxes).map(cb => {
+                const carId = cb.getAttribute('data-id');
+                return deleteCarFromApi(carId);
+            });
+
+            // Wait for all deletions to finish
+            await Promise.all(deletePromises);
+            
+            // Reload the list
+            fetchWishlist();
+        });
+
+        // Initialize
+        fetchWishlist();
+
+    </script>
+    </body>
+</html>

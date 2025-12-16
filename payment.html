@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout | HEXA XOTICS</title>
+    <link rel="stylesheet" href="aboutus.css">
+    <style>
+        input[readonly] { background-color: #f9f9f9; color: #555; cursor: not-allowed; }
+        .paypal-box {
+            margin-top: 15px;
+            padding: 15px;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            background-color: #fcfcfc;
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="home.html" class="logo">
+                    <img src="./assets/logo.png" alt="home.html" class="logo-image">
+                </a>
+                <div class="logo-text">HEXA XOTICS</div>
+            </div>
+            <div class="header-right-group">
+                <nav class="header-nav-new">
+                    <a href="home.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                        </svg>
+                        Shop
+                    </a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <div class="checkout-container">
+        <h1 class="main-title">Payment & Checkout</h1>
+        <div class="checkout-grid">
+            <div class="card summary-card">
+                <h2 class="section-title text-magenta">Order Summary</h2>
+                <p class="sub-text">Review your selection before proceeding to payment.</p>
+                <div class="product-image-container">
+                    <img id="checkout-img" src="./assets/hero2.jpg" alt="Car" class="product-img">
+                </div>
+                <h3 id="checkout-title" class="product-name">Loading Car Details...</h3>
+                <div class="manual-price-group">
+                    <label class="manual-price-label">Base Price (Fixed):</label>
+                    <div class="price-input-wrapper">
+                        <span class="currency-symbol">$</span>
+                        <input type="number" id="manual-base-price" value="0" placeholder="0.00" readonly>
+                    </div>
+                </div>
+                <hr class="divider">
+                <div class="price-breakdown">
+                    <div class="price-row"><span>Base Price</span><span id="summary-base">$0.00</span></div>
+                    <div class="price-row"><span>Luxury Tax (8%)</span><span id="summary-tax">$0.00</span></div>
+                    <div class="price-row"><span>Documentation Fee</span><span id="summary-doc">$299.00</span></div>
+                </div>
+                <hr class="divider">
+                <div class="total-row"><span>Total Due</span><span id="summary-total">$0.00</span></div>
+            </div>
+
+            <div class="card payment-card">
+                <h2 class="section-title">Payment Method</h2>
+                <div class="payment-options-box">
+                    <div class="radio-header">
+                        <div class="radio-left">
+                            <input type="radio" name="payment" checked style="width: 18px; height: 18px; accent-color: black;">
+                            <span>Credit Card</span>
+                        </div>
+                        <img src="./assets/card.jpeg" alt="Card" class="card-reader-img">
+                    </div>
+                    <div class="cc-form">
+                        <label>Card Number</label>
+                        <input type="text" id="card-number" placeholder="XXXX XXXX XXXX XXXX" maxlength="19">
+                        <label>Card Holder Name</label>
+                        <input type="text" id="card-name" placeholder="John Doe">
+                        <div class="row-inputs">
+                            <div style="flex: 1;">
+                                <label>Exp Date</label>
+                                <input type="text" id="card-expiry" placeholder="MM/YY" maxlength="5">
+                            </div>
+                            <div style="flex: 1;">
+                                <label>CVC</label>
+                                <input type="text" id="card-cvc" placeholder="CVC" maxlength="4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="paypal-box">
+                    <div class="radio-left">
+                        <input type="radio" name="payment" style="width: 18px; height: 18px; accent-color: black;">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/PayPal.svg" alt="PayPal" style="height: 24px; margin-left: 10px;">
+                    </div>
+                </div>
+                <div class="checkbox-group terms-check">
+                    <input type="checkbox" id="terms">
+                    <label for="terms">I agree to the Terms and Conditions.</label>
+                </div>
+            </div>
+        </div>
+        <div class="action-area">
+            <button class="btn-checkout">Confirm Payment</button>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="success-modal">
+        <div class="modal-content receipt-card">
+            <h2 class="section-title text-magenta" style="text-align: center;">Order Confirmed</h2>
+            <div class="product-image-container small-img-container">
+                <img id="modal-img" src="" alt="Car" class="product-img">
+            </div>
+            <h3 id="modal-title" class="product-name" style="text-align: center;">-</h3>
+            <div class="price-breakdown">
+                <div class="price-row"><span>Base Price</span><span id="modal-base-price">$0.00</span></div>
+                <div class="price-row"><span>Luxury Tax (8%)</span><span id="modal-tax">$0.00</span></div>
+                <div class="price-row"><span>Fees</span><span id="modal-fees">$299.00</span></div>
+            </div>
+            <hr class="divider">
+            <div class="total-row"><span>Total Paid</span><span class="text-magenta" id="modal-total-display">$0.00</span></div>
+            <div class="action-area"><button class="btn-checkout" id="close-modal-btn">Return to Shop</button></div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const inputPrice = document.getElementById('manual-base-price');
+            const displayBase = document.getElementById('summary-base');
+            const displayTax = document.getElementById('summary-tax');
+            const displayDoc = document.getElementById('summary-doc');
+            const displayTotal = document.getElementById('summary-total');
+            
+            const checkoutImg = document.getElementById('checkout-img');
+            const checkoutTitle = document.getElementById('checkout-title');
+            const modalImg = document.getElementById('modal-img');
+            const modalTitle = document.getElementById('modal-title');
+            const checkoutBtn = document.querySelector('.btn-checkout');
+            const modal = document.getElementById('success-modal');
+            const closeModalBtn = document.getElementById('close-modal-btn');
+
+            const modalBase = document.getElementById('modal-base-price');
+            const modalTax = document.getElementById('modal-tax');
+            const modalFees = document.getElementById('modal-fees');
+            const modalTotalDisplay = document.getElementById('modal-total-display');
+
+            const TAX_RATE = 0.08;
+            const DOC_FEE = 299.00;
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const carId = urlParams.get('id');
+            let currentCarImage = "";
+
+            if (carId) {
+                fetch(`http://localhost:3000/api/cars/${carId}`)
+                    .then(res => res.json())
+                    .then(json => {
+                        if(json.message === "success" && json.data) {
+                            updateCheckoutUI(json.data);
+                        }
+                    })
+                    .catch(err => console.error("Error fetching car:", err));
+            } else {
+                checkoutTitle.innerText = "No Car Selected";
+            }
+
+            function updateCheckoutUI(car) {
+                const imgSrc = car.image_url.startsWith('http') ? car.image_url : `http://localhost:3000${car.image_url}`;
+                currentCarImage = imgSrc;
+                checkoutImg.src = imgSrc;
+                modalImg.src = imgSrc;
+                const title = `${car.make} ${car.model}`;
+                checkoutTitle.innerText = title;
+                modalTitle.innerText = title;
+                inputPrice.value = car.price;
+                calculateTotal();
+            }
+
+            function calculateTotal() {
+                let basePrice = parseFloat(inputPrice.value) || 0;
+                const taxAmount = basePrice * TAX_RATE;
+                const totalAmount = basePrice + taxAmount + DOC_FEE;
+                const formatter = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' });
+                displayBase.textContent = formatter.format(basePrice);
+                displayTax.textContent = `+ ${formatter.format(taxAmount)}`;
+                displayTotal.textContent = formatter.format(totalAmount);
+                modalBase.textContent = formatter.format(basePrice);
+                modalTax.textContent = formatter.format(taxAmount);
+                modalTotalDisplay.textContent = formatter.format(totalAmount);
+            }
+
+            if (checkoutBtn) {
+                checkoutBtn.addEventListener('click', async function (e) {
+                    e.preventDefault();
+                    if(!document.getElementById('terms').checked) {
+                        alert("Please accept the Terms.");
+                        return;
+                    }
+
+                    // ✅ START: New Logic (Using userId from Login)
+                    const userId = localStorage.getItem('userId');
+                    
+                    if (userId) {
+                        try {
+                            // 1. Fetch User Data from Server using ID
+                            const userResponse = await fetch(`http://localhost:3000/api/user/${userId}`);
+                            const userData = await userResponse.json();
+
+                            if(userData && userData.email) {
+                                // 2. Send Email
+                                const orderData = {
+                                    userEmail: userData.email,
+                                    carModel: checkoutTitle.innerText,
+                                    totalPrice: displayTotal.innerText,
+                                    image: currentCarImage
+                                };
+
+                                fetch('http://localhost:3000/api/send-order-email', {
+                                    method: 'POST',
+                                    headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify(orderData)
+                                })
+                                .then(res => res.json())
+                                .then(data => console.log("Email Status:", data.message));
+                            }
+                        } catch (err) {
+                            console.error("Error fetching user email:", err);
+                        }
+                    } else {
+                        console.log("User not logged in");
+                    }
+                    // ✅ END Logic
+
+                    if (modal) modal.classList.add('open');
+                });
+            }
+
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', function () {
+                    window.location.href = "home.html";
+                });
+            }
+
+            // Input Formatting
+            const cardNumberInput = document.getElementById('card-number');
+            if(cardNumberInput) {
+                cardNumberInput.addEventListener('input', function (e) {
+                    let value = e.target.value.replace(/\D/g, ''); 
+                    value = value.substring(0, 16); 
+                    e.target.value = value.match(/.{1,4}/g)?.join(' ') || value;
+                });
+            }
+            const expiryInput = document.getElementById('card-expiry');
+            if(expiryInput) {
+                expiryInput.addEventListener('input', function (e) {
+                    let value = e.target.value.replace(/\D/g, ''); 
+                    if (value.length >= 2) value = value.substring(0, 2) + '/' + value.substring(2, 4);
+                    e.target.value = value;
+                });
+            }
+            const cvcInput = document.getElementById('card-cvc');
+            if(cvcInput) {
+                cvcInput.addEventListener('input', function(e) {
+                    e.target.value = e.target.value.replace(/\D/g, '').substring(0, 4);
+                });
+            }
+        });
+    </script>
+</body>
+</html>

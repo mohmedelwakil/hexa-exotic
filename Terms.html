@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - Hexa Xotics</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --color-light-bg: #ffffff;
+            --color-accent: #950045; /* Hexa Xotics Accent */
+            --color-text-dark: #1a1a1a;
+            --color-text-gray: #555555;
+            --max-width: 1280px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--color-text-dark);
+            background-color: var(--color-light-bg);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- Header Styles (Frosted Glass) --- */
+        .header {
+            background-color: rgba(220, 220, 220, 0.9);
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid #cccccc;
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            backdrop-filter: blur(8px);
+        }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Logo */
+        .logo {
+            height: 40px; 
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-image {
+            height: 100%; 
+            width: auto;
+        }
+
+        .logo-text {
+            font-family: Arial, sans-serif; 
+            font-weight: 900;
+            font-size: 1.4rem;
+            color: #333; 
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            white-space: nowrap;
+            /* Subtle text shadow for depth */
+            text-shadow: 0 1px 0 #fff, 0 2px 0 #ccc; 
+        }
+
+        /* Navigation Layout */
+        .header-right-group {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* Desktop Nav - This was missing in your code */
+        .header-nav-new {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--color-text-gray);
+        }
+
+        .nav-item:hover, .nav-item.active {
+            /* color: var(--color-accent); */
+            color: #950045;
+        }
+
+        .header-nav-new .nav-item:hover, .header-nav-new .nav-item.active {
+            color: var(--color-accent);
+        }
+
+        /* Icons */
+        .search-icon-link {
+            color: var(--color-text-dark);
+            display: flex;
+            align-items: center;
+        }
+
+        .search-icon-link:hover {
+            color: var(--color-accent);
+        }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            color: var(--color-text-dark);
+        }
+
+        /* Mobile Menu Container */
+        .mobile-menu-container {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            background-color: #fff;
+            border-bottom: 1px solid #e0e0e0;
+            padding: 10px 20px;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            z-index: 49;
+        }
+
+        .mobile-nav-item {
+            padding: 15px 0;
+            border-bottom: 1px solid #f0f0f0;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #333;
+        }
+
+        .mobile-nav-item:hover {
+            color: var(--color-accent);
+        }
+
+        .mobile-nav-item:last-child {
+            border-bottom: none;
+        }
+
+        /* --- Main Content Layout --- */
+        main.container {
+            max-width: 800px;
+            padding-top: 60px;
+            padding-bottom: 60px;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 60px;
+            gap: 30px;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: #111;
+        }
+
+        .hero-text p {
+            font-size: 1rem;
+            color: #666;
+            line-height: 1.7;
+        }
+
+        .hero-image i {
+            color: #e0e0e0;
+            font-size: 6rem !important;
+        }
+
+        /* Terms Sections */
+        .term-section {
+            margin-bottom: 40px;
+            padding-bottom: 40px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .term-section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: #222;
+        }
+
+        p {
+            font-size: 0.95rem;
+            color: #444;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        /* --- Footer --- */
+        .footer {
+            background-color: #f9f9f9;
+            padding: 40px 20px;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+
+        .footer p {
+            text-align: center;
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 500;
+        }
+
+        .footer-links a:hover {
+            color: var(--color-accent);
+            text-decoration: underline;
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .header-nav-new {
+                display: none; /* Hide desktop nav */
+            }
+
+            .mobile-menu-btn {
+                display: block; /* Show hamburger */
+            }
+
+            .logo-text {
+                display: none; /* Hide logo text on very small screens */
+            }
+            
+            .hero-section {
+                flex-direction: column-reverse;
+                align-items: center;
+                text-align: center;
+            }
+
+            .hero-image {
+                margin-bottom: 20px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+        
+        /* Utility class for JS toggling */
+        .show-mobile-menu {
+            display: flex !important;
+        }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="container header-content">
+
+            <a href="home.html" class="logo">
+                <img src="./assets/logo.png" alt="HEXA Logo" class="logo-image">
+                <div class="logo-text">HEXA XOTICS</div>
+            </a>
+
+            <div class="header-right-group">
+                <nav class="header-nav-new">
+                    <a href="home.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+                        Shop
+                    </a>
+                    <a href="payment.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+                        Buy
+                    </a>
+                    <a href="acountmangment.html" class="nav-item">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        Account
+                    </a>
+                    <a href="aboutus.html" class="nav-item active">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                        About us
+                    </a>
+                </nav>
+
+                <a href="#" class="search-icon-link">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                </a>
+
+                <button class="mobile-menu-btn" id="mobile-menu-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu-container" id="mobile-menu">
+            <a href="home.html" class="mobile-nav-item">Shop</a>
+            <a href="payment.html" class="mobile-nav-item">Buy</a>
+            <a href="acountmangment.html" class="mobile-nav-item">Account</a>
+            <a href="aboutus.html" class="mobile-nav-item">About us</a>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <section class="hero-section">
+            <div class="hero-text">
+                <h1>Terms of Service</h1>
+                <p>Please read these Terms of Service carefully before using our services. This document outlines the legal agreement between you and <strong>HEXA XOTICS</strong>, governing your use of our website and services. By accessing or using the Service, you agree to be bound by these Terms.</p>
+            </div>
+            <div class="hero-image">
+                <i class="fa-regular fa-file-lines"></i>
+            </div>
+        </section>
+
+        <section class="term-section">
+            <h2>1. Acceptance of Terms</h2>
+            <p>By accessing or using our services, you agree to be bound by these Terms of Service. If you disagree with any part of the terms, then you may not access the service. These terms apply to all visitors, users, and others who access or use the service.</p>
+        </section>
+
+        <section class="term-section">
+            <h2>2. User Obligations</h2>
+            <p>You agree to use our services only for lawful purposes and in a way that does not infringe the rights of, restrict, or inhibit anyone else's use and enjoyment of the service. Prohibited behavior includes harassing or causing distress or inconvenience to any other user, transmitting obscene or offensive content, or disrupting the normal flow of dialogue within our service.</p>
+        </section>
+
+        <section class="term-section">
+            <h2>3. Account Rules</h2>
+            <p>To create an account, you must be at least 18 years old. You must provide accurate and complete information and keep your account information updated. You may not use as a username a name of another person or entity or that is not lawfully available for use.</p>
+        </section>
+
+        <section class="term-section">
+            <h2>4. Acceptable Use</h2>
+            <p>You agree not to use the service for any illegal or unauthorized purpose. You must not, in the use of the Service, violate any laws in your jurisdiction (including but not limited to copyright laws). This includes, but is not limited to, transmitting any worms or viruses or any code of a destructive nature.</p>
+        </section>
+
+        <section class="term-section">
+            <h2>5. Limitation of Liability</h2>
+            <p>In no event shall <strong>HEXA XOTICS</strong>, nor its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.</p>
+        </section>
+
+        <section class="term-section">
+            <h2>6. Contact Information</h2>
+            <p>If you have any questions about these Terms, please contact us:</p>
+            <ul style="list-style: disc; margin-left: 20px; color: #444; font-size: 0.95rem;">
+                <li>By email: support@hexaxotics.com</li>
+                <li>By visiting this page on our website: <a href="contactUS.html" style="color:var(--color-accent); text-decoration:underline;">Contact Us</a></li>
+            </ul>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 HEXA XOTICS. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="privacyandpolicy.html">Privacy Policy</a>
+            <a href="Terms.html">Terms of Service</a>
+            <a href="contactUS.html">Contact Us</a>
+        </div>
+    </footer>
+
+    <script>
+        const menuBtn = document.getElementById('mobile-menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('show-mobile-menu');
+        });
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In</title>
+    <link rel="stylesheet" href="signup.css"> 
+</head>
+<body>
+
+  <header class="header">
+        <div class="container header-content">
+            <div class="logo">
+               <a href="home.html" class="logo">
+                    <img src="./assets/logo.png" alt="logo" class="logo-image">
+                </a>
+                <div class="logo-text">HEXA XOTICS</div>
+            </div>
+        </div>
+    </header>
+
+<div class="containerr">
+    <img src="./assets/logo.png" class="logoo">
+    <h2>Welcome Back</h2>
+
+    <div id="signin-form">
+        <label>Username</label>
+        <div class="input-group">
+            <input type="text" id="login-username" placeholder="Enter your username">
+        </div>
+
+        <label>Password</label>
+        <div class="input-group">
+            <input type="password" id="login-password" placeholder="••••••••">
+        </div>
+
+        <button class="btn primary" onclick="handleLogin()">Sign In</button>
+        
+        <p id="msg-box" style="text-align: center; margin-top: 10px; display: none;"></p>
+
+        <div class="divider">OR</div>
+        <p class="signup">Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
+</div>
+
+<footer class="footer">
+    <p>&copy; 2025 HEXA XOTICS. All rights reserved.</p>
+</footer>
+
+<script>
+    async function handleLogin() {
+        // بنسحب ال username
+        const username = document.getElementById('login-username').value;
+        const password = document.getElementById('login-password').value;
+        const msgBox = document.getElementById('msg-box');
+
+        if(!username || !password) {
+             msgBox.style.color = "red";
+             msgBox.innerText = "Please fill in all fields.";
+             msgBox.style.display = "block";
+             return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:3000/api/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                // بنبعت username للسيرفر
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                localStorage.setItem('userId', data.userId);
+                msgBox.style.color = "green";
+                msgBox.innerText = "Login Successful!";
+                msgBox.style.display = "block";
+                
+                // التعديل: التوجيه لصفحة الـ Home
+                setTimeout(() => {
+                    window.location.href = 'home.html';
+                }, 1000);
+            } else {
+                msgBox.style.color = "red";
+                msgBox.innerText = data.message || "Invalid username or password";
+                msgBox.style.display = "block";
+            }
+        } catch (err) {
+            console.error(err);
+            msgBox.style.color = "red";
+            msgBox.innerText = "Server error.";
+            msgBox.style.display = "block";
+        }
+    }
+</script>
+
+</body>
+</html>
